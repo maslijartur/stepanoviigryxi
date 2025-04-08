@@ -3,31 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Степанові Ігри</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
+      background-image: url('https://images.unsplash.com/photo-1557682260-96727c5d7f76'); /* ТУТ МОЖНА ЗАМІНИТИ */
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px 20px;
+      border-radius: 16px;
       text-align: center;
-      padding: 80px 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     h1 {
-      font-size: 2rem;
-      margin-bottom: 30px;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      color: #333;
     }
 
     .btn-group {
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      flex-direction: column;
+      gap: 15px;
     }
 
     button {
-      padding: 12px 24px;
+      padding: 12px;
       font-size: 1.1rem;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
       transition: 0.3s ease;
     }
@@ -51,29 +74,35 @@
     }
 
     .message {
-      margin-top: 40px;
-      font-size: 1.2rem;
+      margin-top: 25px;
+      font-size: 1.05rem;
       color: #555;
     }
 
     @media (max-width: 500px) {
-      .btn-group {
-        flex-direction: column;
-        gap: 10px;
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>Ви дійсно хочете дізнатись, де ваш столик?</h1>
+  <div class="container">
+    <h1>Ви дійсно хочете дізнатись, де ваш столик?</h1>
 
-  <div class="btn-group">
-    <button class="yes-btn" onclick="redirectToTeam()">Так, звісно!</button>
-    <button class="no-btn" onclick="showSadMessage()">Ні</button>
+    <div class="btn-group">
+      <button class="yes-btn" onclick="redirectToTeam()">Так, звісно!</button>
+      <button class="no-btn" onclick="showSadMessage()">Ні</button>
+    </div>
+
+    <div class="message" id="message"></div>
   </div>
-
-  <div class="message" id="message"></div>
 
   <script>
     function redirectToTeam() {
