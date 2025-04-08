@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Де мій столик?</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const team = params.get("team");
+
+    const links = {
+      "1": "https://www.instagram.com/team1/",
+      "2": "https://www.instagram.com/team2/",
+      "3": "https://www.instagram.com/team3/",
+      "4": "https://www.instagram.com/team4/",
+      "5": "https://www.instagram.com/team5/",
+      "6": "https://www.instagram.com/team6/",
+      "7": "https://www.instagram.com/team7/",
+      "8": "https://www.instagram.com/team8/"
+    };
+
+    if (team && links[team]) {
+      window.location.href = links[team];
+    }
+  </script>
+</head>
+<body>
+  <h1>Зачекайте… Ми шукаємо ваш столик 🍷</h1>
+</body>
+</html>
