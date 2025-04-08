@@ -2,30 +2,78 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Гра починається</title>
+  <title>Степанові Ігри</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
       text-align: center;
-      padding: 50px;
+      padding: 80px 20px;
     }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
     button {
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 1.1rem;
       border: none;
-      background-color: #222;
-      color: #fff;
+      border-radius: 12px;
       cursor: pointer;
+      transition: 0.3s ease;
     }
-    button:hover {
-      background-color: #444;
+
+    .yes-btn {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .no-btn {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .no-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .message {
+      margin-top: 40px;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    @media (max-width: 500px) {
+      .btn-group {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
+
   <h1>Ви дійсно хочете дізнатись, де ваш столик?</h1>
-  <button onclick="redirectToTeam()">Так, звісно!</button>
+
+  <div class="btn-group">
+    <button class="yes-btn" onclick="redirectToTeam()">Так, звісно!</button>
+    <button class="no-btn" onclick="showSadMessage()">Ні</button>
+  </div>
+
+  <div class="message" id="message"></div>
 
   <script>
     function redirectToTeam() {
@@ -49,6 +97,12 @@
         alert("Щось пішло не так. Спробуйте ще раз.");
       }
     }
+
+    function showSadMessage() {
+      const msg = document.getElementById("message");
+      msg.innerText = "Це сумно, тому що ти не виграєш так у Степанових Іграх :(";
+    }
   </script>
+
 </body>
 </html>
