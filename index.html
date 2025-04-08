@@ -2,28 +2,53 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Де мій столик?</title>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const team = params.get("team");
-
-    const links = {
-      "1": "https://www.instagram.com/team1/",
-      "2": "https://www.instagram.com/team2/",
-      "3": "https://www.instagram.com/team3/",
-      "4": "https://www.instagram.com/team4/",
-      "5": "https://www.instagram.com/team5/",
-      "6": "https://www.instagram.com/team6/",
-      "7": "https://www.instagram.com/team7/",
-      "8": "https://www.instagram.com/team8/"
-    };
-
-    if (team && links[team]) {
-      window.location.href = links[team];
+  <title>Гра починається</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
     }
-  </script>
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background-color: #222;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
-  <h1>Зачекайте… Ми шукаємо ваш столик 🍷</h1>
+  <h1>Ви дійсно хочете дізнатись, де ваш столик?</h1>
+  <button onclick="redirectToTeam()">Так, звісно!</button>
+
+  <script>
+    function redirectToTeam() {
+      const params = new URLSearchParams(window.location.search);
+      const team = params.get("team");
+
+      const links = {
+        "1": "https://www.instagram.com/team1/",
+        "2": "https://www.instagram.com/team2/",
+        "3": "https://www.instagram.com/team3/",
+        "4": "https://www.instagram.com/team4/",
+        "5": "https://www.instagram.com/team5/",
+        "6": "https://www.instagram.com/team6/",
+        "7": "https://www.instagram.com/team7/",
+        "8": "https://www.instagram.com/team8/"
+      };
+
+      if (team && links[team]) {
+        window.location.href = links[team];
+      } else {
+        alert("Щось пішло не так. Спробуйте ще раз.");
+      }
+    }
+  </script>
 </body>
 </html>
