@@ -1,142 +1,117 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Степанові Ігри</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://github.com/maslijartur/stepanoviigryxi/raw/main/pstruh.png" type="image/x-icon">
-
-
+  <link rel="icon" href="https://github.com/maslijartur/stepanoviigryxi/raw/main/favicon.ico" type="image/x-icon">
   <style>
-    * {
-      box-sizing: border-box;
+    body, html {
       margin: 0;
       padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
     }
 
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background-image: url('https://github.com/maslijartur/stepanoviigryxi/blob/main/pstruh1.jpg?raw=true');
-     /*background-image: url('https://github.com/maslijartur/stepanoviigryxi/blob/main/pstruh2.jpg?raw=true');*/
-      background-size: cover; 
+    .background {
+      background-image: url("https://raw.githubusercontent.com/maslijartur/stepanoviigryxi/main/background.jpg");
+      background-size: cover;
       background-position: center;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
     }
 
     .container {
       background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px 20px;
-      border-radius: 16px;
+      max-width: 90%;
+      margin: 20% auto;
+      padding: 20px;
+      border-radius: 15px;
       text-align: center;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
-      font-size: 1.6rem;
-      margin-bottom: 24px;
-      color: #333;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
     }
 
-    .btn-group {
+    .buttons {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     button {
-      padding: 12px;
-      font-size: 1.1rem;
+      padding: 12px 20px;
+      font-size: 1rem;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: background 0.3s;
     }
 
-    .yes-btn {
-      background-color: #2ecc71;
+    #yes-button {
+      background-color: #4CAF50;
       color: white;
     }
 
-    .yes-btn:hover {
-      background-color: #27ae60;
+    #yes-button:hover {
+      background-color: #45a049;
     }
 
-    .no-btn {
-      background-color: #e74c3c;
+    #no-button {
+      background-color: #f44336;
       color: white;
     }
 
-    .no-btn:hover {
-      background-color: #c0392b;
-    }
-
-    .message {
-      margin-top: 25px;
-      font-size: 1.05rem;
-      color: #555;
-    }
-
-    @media (max-width: 500px) {
-      h1 {
-        font-size: 1.4rem;
-      }
-
-      button {
-        font-size: 1rem;
-        padding: 10px;
-      }
+    #no-button:hover {
+      background-color: #da190b;
     }
   </style>
 </head>
 <body>
-
+  <div class="background"></div>
   <div class="container">
-    <h1>Ви дійсно хочете дізнатись, чи це ваш столик?</h1>
-
-    <div class="btn-group">
-      <button class="yes-btn" onclick="redirectToTeam()">Так, звісно!</button>
-      <button class="no-btn" onclick="showSadMessage()">Ні</button>
+    <h1>Ви дійсно хочете прийняти участь у грі?</h1>
+    <div class="buttons">
+      <button id="yes-button">Так, звісно!</button>
+      <button id="no-button">Ні</button>
     </div>
-
-    <div class="message" id="message"></div>
   </div>
 
   <script>
-    function redirectToTeam() {
-      const params = new URLSearchParams(window.location.search);
-      const team = params.get("team");
+    const urlParams = new URLSearchParams(window.location.search);
+    const team = urlParams.get('team');
 
-      const links = {
-        "1": "https://www.pravda.beer/",
-        "2": "https://meat-and-justice.choiceqr.com/",
-        "3": "https://www.instagram.com/rebernialviv/",
-        "4": "https://www.instagram.com/dzygalviv/",
-        "5": "https://www.tiktok.com/@pianavyshnia/video/7384379488982830342",
-        "6": "https://www.grandcafe.lviv.ua/",
-        "7": "https://www.fest.lviv.ua/uk/restaurants/pani-frida/",
-        "8": "https://www.masochhotel.com/"
-        "9": "https://www.instagram.com/team8/"
-      };
+    const links = {
+      "1": "https://www.tiktok.com/@pianavyshnia/video/7384379488982830342",
+      "2": "https://instagram.com/team2page",
+      "3": "https://instagram.com/team3page",
+      "4": "https://instagram.com/team4page",
+      "5": "https://instagram.com/team5page",
+      "6": "https://instagram.com/team6page",
+      "7": "https://instagram.com/team7page",
+      "8": "https://instagram.com/team8page",
+      "9": "https://instagram.com/team9page"
+    };
 
+    document.getElementById("yes-button").addEventListener("click", function () {
       if (team && links[team]) {
         window.location.href = links[team];
       } else {
-        alert("Щось пішло не так. Спробуйте ще раз.");
+        alert("Не вдалося визначити команду. Спробуйте ще раз або зверніться до ведучого.");
       }
-    }
+    });
 
-    function showSadMessage() {
-      const msg = document.getElementById("message");
-      msg.innerText = "Це сумно, тому що ти не виграєш так у Степанових Іграх :(";
-    }
+    document.getElementById("no-button").addEventListener("click", function () {
+      alert("Це сумно, тому що ти не виграєш так у Степанових Іграх :(");
+    });
   </script>
-
 </body>
 </html>
